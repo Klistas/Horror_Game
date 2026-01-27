@@ -13,8 +13,8 @@ public class LightFlicker : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(Flicker());
         AudioSource = GetComponent<AudioSource>();
+        StartCoroutine(Flicker());
     }
 
     IEnumerator Flicker()
