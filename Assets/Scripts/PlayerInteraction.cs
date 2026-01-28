@@ -28,7 +28,11 @@ public class PlayerInteraction : MonoBehaviour
             {
                 //문을 열수 있는 메서드를 호출해주어야합니다.
                 IInteractable interaction = hit.collider.GetComponent<IInteractable>();
-                interaction.Interact();
+
+                if (interaction != null)
+                {
+                    interaction.Interact();
+                }
             }
         }
         else
