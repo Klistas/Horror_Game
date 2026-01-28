@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Drawer : MonoBehaviour
+public class Drawer : MonoBehaviour,IInteractable
 {
     public bool IsOpen;
     public float OpenPos;
@@ -28,6 +28,5 @@ public class Drawer : MonoBehaviour
         Vector3 currentPos = transform.position;
         Vector3 targetPos = new Vector3(targetX, currentPos.y, currentPos.z);
         transform.position = Vector3.Lerp(currentPos, targetPos, OpenSpeed * Time.deltaTime);
-
     }
 }

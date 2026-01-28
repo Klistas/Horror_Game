@@ -27,11 +27,8 @@ public class PlayerInteraction : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E))
             {
                 //문을 열수 있는 메서드를 호출해주어야합니다.
-                Door door = hit.collider.GetComponent<Door>();
-                door.Interact();
-
-                Drawer drawer = hit.collider.GetComponent<Drawer>();
-                door.Interact();
+                IInteractable interaction = hit.collider.GetComponent<IInteractable>();
+                interaction.Interact();
             }
         }
         else

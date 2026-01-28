@@ -1,20 +1,19 @@
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : MonoBehaviour, IInteractable
 {
 
     public bool isOpen;
+    public bool isLocked;
     public float OpenAngle;
     public float CloseAngle;
     public float OpenSpeed;
 
-    void Start()
-    {
-        
-    }
 
     public void Interact()
     {
+        if(isLocked) return;
+
         isOpen = !isOpen;
         Debug.Log($"문 열림 상태 : {isOpen}");
         //if (isOpen)
