@@ -10,6 +10,14 @@ public class Drawer : MonoBehaviour,IInteractable
     public void Interact()
     {
         IsOpen = !IsOpen;
+        if(IsOpen)
+        {
+            GameManager.instance.ShowMessage("서랍장을 열었습니다.");
+        }
+        else
+        {
+            GameManager.instance.ShowMessage("서랍장을 닫았습니다.");
+        }
     }
 
     void Update()

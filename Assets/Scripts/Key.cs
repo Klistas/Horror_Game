@@ -12,6 +12,7 @@ public class Key : MonoBehaviour,IInteractable
 
         // LockedDoor.isLocked = false;
         KeyImage.color = KeyColor;
+        GameManager.instance.ShowMessage("키를 주웠습니다.");
         GameManager.instance.Unlock();
         gameObject.SetActive(false);
     }

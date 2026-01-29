@@ -12,10 +12,14 @@ public class Door : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if(isLocked) return;
-
+        if (isLocked)
+        {
+            GameManager.instance.ShowMessage("문이 잠겼습니다.");
+            return;
+        }
         isOpen = !isOpen;
-        Debug.Log($"문 열림 상태 : {isOpen}");
+        GameManager.instance.ShowMessage($"문열림 상태 : {isOpen}");
+
         //if (isOpen)
         //{
         //    transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, OpenAngle, transform.rotation.z));
