@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,7 +8,17 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
-        instance = this;
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
+
     }
 
     public void Unlock()
