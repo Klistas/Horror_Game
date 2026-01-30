@@ -1,3 +1,4 @@
+using StarterAssets;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,7 @@ public class PlayerInteraction : MonoBehaviour
     public float FadeOutSpeed;
     public float FadeOutTime;
     public bool IsJumpScared;
+    public FirstPersonController Controller;
 
 
     void Update()
@@ -53,7 +55,9 @@ public class PlayerInteraction : MonoBehaviour
     {
         if(other.CompareTag("Trigger") && !IsJumpScared)
         {
+            audioSource.Stop();
             audioSource.PlayOneShot(JumpScareSound);
+            Controller.enabled = false;
             StartCoroutine(JumpScare());
         }
     }
@@ -71,6 +75,7 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
         IsJumpScared = true;
+        Controller.enabled = true;
         JumpScareImg.gameObject.SetActive(false);
     }
 }

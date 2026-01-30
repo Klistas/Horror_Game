@@ -3696,6 +3696,18 @@ MonoBehaviour:
   FadeOutSpeed: 0.01
   FadeOutTime: 0.05
   IsJumpScared: 0
+  Controller: {fileID: 1764523924}
+--- !u!114 &1764523924 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+  m_PrefabInstance: {fileID: 1903861270}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94381692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &1764523926
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3707,11 +3719,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 8300000, guid: 4d9dc0e7bb82e8845ae13a98c2151766, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

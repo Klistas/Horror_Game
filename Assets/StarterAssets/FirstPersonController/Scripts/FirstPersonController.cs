@@ -73,6 +73,7 @@ namespace StarterAssets
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
+		private AudioSource _audioSource;
 
 		private bool IsCurrentDeviceMouse
 		{
@@ -101,12 +102,13 @@ namespace StarterAssets
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
 			_playerInput = GetComponent<PlayerInput>();
+            _audioSource = GetComponent<AudioSource>();
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
 
-			// reset our timeouts on start
-			_jumpTimeoutDelta = JumpTimeout;
+            // reset our timeouts on start
+            _jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
 		}
 
@@ -160,8 +162,21 @@ namespace StarterAssets
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is no input, set the target speed to 0
-			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
-
+			if (_input.move == Vector2.zero)
+			{
+				targetSpeed = 0.0f;
+				if(_audioSource.isPlaying)
+				{
+					_audioSource.Stop();
+				}
+			}
+			else
+			{
+				if(!_audioSource.isPlaying)
+				{
+					_audioSource.Play();
+				}
+			}
 			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
