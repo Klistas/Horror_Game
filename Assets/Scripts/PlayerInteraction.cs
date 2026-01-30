@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,12 @@ public class PlayerInteraction : MonoBehaviour
     public Image CrossHair;
     public Color InteractColor;
     public Color UnInteractColor;
+    public Image JumpScareImg;
+    public AudioClip JumpScareSound;
+    public AudioSource audioSource;
+    public float FadeOutSpeed;
+    public float FadeOutTime;
+    public bool IsJumpScared;
 
 
     void Update()
@@ -40,5 +47,30 @@ public class PlayerInteraction : MonoBehaviour
             EKeyImage.gameObject.SetActive(false);
             CrossHair.color = UnInteractColor;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Trigger") && !IsJumpScared)
+        {
+            audioSource.PlayOneShot(JumpScareSound);
+            StartCoroutine(JumpScare());
+        }
+    }
+
+    IEnumerator JumpScare()
+    {
+        JumpScareImg.gameObject.SetActive(true);
+        while(true)
+        {
+            JumpScareImg.color -= new Color(0, 0, 0, FadeOutSpeed);
+            yield return new WaitForSeconds(FadeOutTime);
+            if(JumpScareImg.color.a <= 0)
+            {
+                break;
+            }
+        }
+        IsJumpScared = true;
+        JumpScareImg.gameObject.SetActive(false);
     }
 }
